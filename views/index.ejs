@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <ul id="task-list">
+      <% tasks.forEach(task => { %>
+        <li id="<%= task.id %>">
+          <span><%= task.id %></span>
+          <span><%= task.description %></span>
+          <span>
+            <span>
+              <button class="status-button <%= task.completed === 'PENDING' ? 'selected' : '' %>" data-task-id="<%= task.id %>" data-status="PENDING">Pendiente</button>
+              <button class="status-button <%= task.completed === 'IN_PROGRESS' ? 'selected' : '' %>" data-task-id="<%= task.id %>" data-status="IN_PROGRESS">En Proceso</button>
+              <button class="status-button <%= task.completed === 'COMPLETED' ? 'selected' : '' %>" data-task-id="<%= task.id %>" data-status="COMPLETED">Finalizado</button>
+            </span>
+          </span>
+          <button class="delete-button" data-task-id="<%= task.id %>">Eliminar</button>
+        </li>
+      <% }); %>
+    </ul>
+    <div class="add-panel">
+        <input type="text" id="task-input" placeholder="Coloca una descripción">
+        <button id="add-button">Agregar tarea</button>
+    </div>
+
+    <script src="functions.js"></script>
+  
+</body>
+</html>
